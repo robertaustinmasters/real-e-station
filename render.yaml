@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: real-e-station-bridge
+    env: python
+    region: ohio
+    plan: free
+    branch: main
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: AI_API_KEY
+        sync: false
+      - key: TWILIO_SID
+        sync: false
+      - key: TWILIO_TOKEN
+        sync: false
+      - key: APPS_SCRIPT_WEBHOOK
+        sync: false
